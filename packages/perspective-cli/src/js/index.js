@@ -18,6 +18,8 @@ import program from "commander";
 import puppeteer from "puppeteer";
 import { createRequire } from "node:module";
 import * as url from "node:url";
+import { addPercentileAggregator } from "./utils.js";
+
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url)).slice(0, -1);
 

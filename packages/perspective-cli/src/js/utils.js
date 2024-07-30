@@ -72,3 +72,19 @@ export const execute = function execute(command, callback) {
 export const open_browser = function open_browser(port) {
     module.exports.execute(OPEN(port), console.log);
 };
+
+// Example function to calculate the nth percentile
+function percentile(values, percentile) {
+    values.sort((a, b) => a - b);
+    const index = Math.ceil(percentile / 100 * values.length);
+    return values[index - 1];
+}
+
+// Integrate this function into the aggregator logic
+export function addPercentileAggregator(data) {
+    const values = data.map(item => item.value); // Adjust this to match your data structure
+    return {
+        p99: percentile(values, 99),
+        p95: percentile(values, 95),
+    };
+}
